@@ -2,7 +2,7 @@
 const Signin = () => {
   return(
     <main> 
-        <h3>Sign In</h3> 
+        <h3>Hello, friend!</h3> 
         <div className="card">
             <form autoComplete="off">
                 <fieldset>
@@ -12,7 +12,7 @@ const Signin = () => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="password">Password</label>
-                    <input type="email" id="password"/>
+                    <input type="password" id="password"/>
                     <p className="error"> Password is Required</p>
                 </fieldset>
                 <button type="submit">Login</button>
