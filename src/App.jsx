@@ -6,7 +6,7 @@ import Signup from "./components/Signup"
 
 
 const App = () => {
-const [step, setStep] = useState('signup');
+const [step, setStep] = useState('forgot');
   return  (
     <div className="container">
       { step === "signin" && <Signin />}
