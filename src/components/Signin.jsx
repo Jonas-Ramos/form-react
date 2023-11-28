@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
+import InputPassword from "./InputPassword";
+
 
 const Signin = () => {
     let {setStep} = useContext(AuthContext);
@@ -15,8 +17,9 @@ const Signin = () => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password"/>
-                    <p className="error"> Password is Required</p>
+                    {/* <input type="password" id="password"/> */}
+                    <InputPassword /> 
+                    {/* <p className="error"> Password is Required</p> */}
                 </fieldset>
                 <button type="submit">Login</button>
                 <div className="forgot" onClick={()=>{setStep("forgot")}}>Forgot Password</div>
