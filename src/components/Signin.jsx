@@ -50,7 +50,7 @@ const Signin = () => {
                         pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,}$"
                     />
                     <p className="error"> La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.
-NO puede tener otros símbolos.</p>
+                    NO puede tener otros símbolos.</p>
                 </fieldset>
                 <button type="submit">Login</button>
                 <div className="forgot" onClick={()=>{setStep("forgot")}}>Forgot Password</div>
