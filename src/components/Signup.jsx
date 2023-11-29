@@ -1,49 +1,78 @@
 import { useContext } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import AuthContext from "../context/AuthContext";
+import { signUpSchema } from "../schemas/signUpSchema";
 
+const initialValues = {
+  fullName: '',
+  email: '',
+  password: '',
+  confirm: '',
+  framework: '',
+  terms: false,
+}
 const Signup = () => {
   let {setStep} = useContext(AuthContext);
 
-  const initialValues = {
-    fullname: '',
-    email: '',
-    password: '',
-    confirm: '',
-    framework: '',
-    terms: false,
-  }
-
+const onSubmit = (values)=>{
+  console.log(values);
+}
   return (
     <main>
       <h3>Welcome, Join Us!</h3>
       <div className="card">
-        <Formik initialValues={initialValues}>
-        <Form autoComplete="off">
+        <Formik 
+        initialValues={initialValues} 
+        onSubmit={onSubmit}
+        validationSchema={signUpSchema}
+        >
+        <Form   autoComplete="off">
           <fieldset>
             <label htmlFor="fullName">Full fullName</label>
             {/* <input type="text" id="fullName" autoFocus/>
              */}
-             <Field name="fullname" id="fullName" type="text" autoFocus/>
-            <p className="error">Required</p>
+             <Field name="fullName" id="fullName" type="text" autoFocus/>
+             <ErrorMessage 
+             name="fullName" 
+             className="error-message" 
+             component="p"
+             />
+            {/* <p className="error-message">Required</p> */}
           </fieldset>
           <fieldset>
             <label htmlFor="email">email:</label>
             {/* <input type="email" autoComplete="off" id="email" autoFocus/> */}
             <Field name="email" id="email" type="email"/>
-            <p className="error"> Valid Email Required</p>
+            <ErrorMessage 
+             name="email" 
+             className="error-message" 
+             component="p"
+             />
+
+            {/* <p className="error"> Valid Email Required</p> */}
           </fieldset>
           <fieldset>
             <label htmlFor="password">Password</label>
             {/* <input type="password" id="password"/> */}
-            <Field name="password" id="password" type="password" />
-            <p className="error"> Password is Required</p>
+            <Field name="password" id="password" 
+            type="password" />
+            <ErrorMessage 
+             name="password" 
+             className="error-message" 
+             component="p"
+             />
+            {/* <p className="error"> Password is Required</p> */}
           </fieldset>
           <fieldset>
              <label htmlFor="confirm">Confirm Password</label>
              {/* <input type="password" id="confirm"/> */}
              <Field name="confirm" id="confirm" type="password" />
-             <p className="error">Required</p>
+             <ErrorMessage 
+             name="confirm" 
+             className="error-message" 
+             component="p"
+             />
+             {/* <p className="error">Required</p> */}
          </fieldset>
          <fieldset>
             <label htmlFor="framework">Favorite Framework</label>
@@ -59,15 +88,25 @@ const Signup = () => {
               <option value="vue">Vue</option>
               <option value="angular">Angular</option>
             </Field>
-            <p className="error">Required</p>
+            <ErrorMessage 
+             name="framework" 
+             className="error-message" 
+             component="p"
+             />
+            {/* <p className="error">Required</p> */}
          </fieldset>
          <fieldset>
-          <label htmlFor="terms">
-            <Field name="terms" id="terms" type="checkbox"/>
+          <label htmlFor="terms"> 
+            <Field name="terms" id="terms" type="checkbox"/> 
             {/* <input type="checkbox"  id="terms" />  */}
-             Accept terms & conditions
+             `Accept terms & conditions`
           </label>
-            <p className="error error_terms">Required</p>
+          <ErrorMessage 
+             name="terms" 
+             className="error-message error-message_terms" 
+             component="p"
+             />
+            {/* <p className="error error_terms">Required</p> */}
          </fieldset>
          <button type="submit">Register</button>
         </Form>
